@@ -147,3 +147,32 @@ test_ms/
 O backend será responsável por expor os dados via API, enquanto o frontend Angular consumirá esses endpoints.
 
 Essa separação segue boas práticas modernas de desenvolvimento web, permitindo evolução independente entre as camadas.
+
+# MS Test – API de Clientes
+
+API simples para gerenciamento de clientes, permitindo listar, inativar e reativar registros.
+
+1. Listar clientes
+```
+GET /api/clientes/
+```
+Opcional:
+```
+GET /api/clientes/?mostrar_inativos=1
+```
+2. Inativar cliente
+```
+PATCH /api/clientes/{id}/inativar/
+```
+Exemplo:
+```
+PATCH /api/clientes/1/inativar/
+```
+3. Reativar cliente
+```
+PATCH /api/clientes/{id}/reativar/
+```
+Exemplo:
+```
+PATCH /api/clientes/1/reativar/
+```
