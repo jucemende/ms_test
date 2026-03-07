@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Arial, sans-serif;
+    margin: 32px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 16px;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+a, button {
+    margin-right: 8px;
+}
+    .acoes-inline {
+    display: inline;
+}
