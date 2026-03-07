@@ -15,6 +15,7 @@ class Cliente(models.Model):
         choices=TipoCliente.choices,
         default=TipoCliente.PESSOA_FISICA,
     )
+    ativo = models.BooleanField(default=True)
     criado_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:

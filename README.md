@@ -68,6 +68,7 @@ Implementar a funcionalidade de **inativação de clientes**, fazendo com que cl
 
 ## 5. Bônus inicial:
 
+
 ```python
 ## Como rodar o projeto
 ```bash
@@ -76,3 +77,73 @@ source .venv/bin/activate
 pip install django
 python manage.py migrate
 python manage.py runserver
+```
+
+## 6. O que foi implementado:
+
+Foram realizadas evoluções no projeto Django original para permitir a inativação e reativação de clientes, além de preparar a aplicação para uma arquitetura com backend e frontend separados.
+
+1. Alterações no model
+
+Foi adicionado o campo ativo no model Cliente, permitindo controlar se um cliente está ativo ou inativo no sistema.
+
+Clientes são criados como ativos por padrão
+
+Clientes inativos permanecem armazenados no banco, mas não aparecem na listagem padrão
+
+2. Ajuste na listagem de clientes
+
+A listagem foi alterada para respeitar o status do cliente:
+
+Por padrão, apenas clientes ativos são exibidos
+
+Foi implementado um filtro opcional que permite visualizar todos os clientes, incluindo os inativos
+
+Exemplo de uso do filtro:
+
+/clientes/?mostrar_inativos=1
+3. Inativação e reativação de clientes
+
+Foram criadas rotas para alterar o status do cliente:
+
+Inativar cliente
+
+Reativar cliente
+
+A alteração modifica o campo ativo do registro, preservando o histórico do cliente no banco de dados.
+
+4. Atualização do seed de dados
+
+O script seed_clientes foi atualizado para:
+
+incluir o campo ativo
+
+gerar massa de dados com clientes ativos e inativos
+
+Isso facilita validar o comportamento da listagem e dos filtros.
+
+5. Testes automatizados
+
+Foram adicionados testes automatizados para validar regras principais do sistema:
+
+clientes inativos não aparecem na listagem padrão
+
+o filtro opcional permite visualizar todos os clientes
+
+Os testes utilizam o framework de testes padrão do Django.
+
+6. Separação entre backend e frontend
+
+O projeto foi reorganizado para permitir uma arquitetura desacoplada.
+
+Estrutura atual:
+
+test_ms/
+    backend/
+        Django API
+    frontend/
+        Angular application
+
+O backend será responsável por expor os dados via API, enquanto o frontend Angular consumirá esses endpoints.
+
+Essa separação segue boas práticas modernas de desenvolvimento web, permitindo evolução independente entre as camadas.
