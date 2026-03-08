@@ -176,3 +176,40 @@ Exemplo:
 ```
 PATCH /api/clientes/1/reativar/
 ```
+
+## Frontend – Principais Decisões Técnicas
+
+O frontend foi desenvolvido com **Angular utilizando componentes standalone**, priorizando simplicidade estrutural, reatividade e alinhamento com práticas modernas do framework.
+
+### Arquitetura
+
+A aplicação adota uma separação clara de responsabilidades:
+
+* **Component**: controla o estado da interface e lê parâmetros da URL.
+* **Service**: realiza a comunicação com a API.
+* **Backend/API**: responsável pelas regras de negócio e persistência.
+
+### Gerenciamento de Estado
+
+O estado da lista de clientes é gerenciado com **Signals**, permitindo atualização automática da interface sempre que os dados mudam, sem necessidade de manipulação manual de change detection.
+
+### Integração com a URL
+
+O filtro de clientes inativos é controlado por **query parameters** (`?mostrar_inativos=1`).
+O componente observa alterações na URL e recarrega os dados conforme necessário, permitindo:
+
+* compartilhamento de links com filtros aplicados
+* consistência após recarregar a página
+* navegação alinhada ao histórico do navegador
+
+### Comunicação com a API
+
+O service encapsula a lógica de chamada da API e constrói a URL conforme o filtro selecionado, mantendo o componente desacoplado da lógica de requisição.
+
+### Atualização de Dados
+
+Após ações como ativar ou inativar clientes, a lista é recarregada preservando o filtro atual, garantindo consistência entre interface e dados retornados pela API.
+
+---
+
+Essa abordagem resulta em um frontend **simples, reativo e fácil de manter**, com uma estrutura adequada para evolução futura da aplicação.
