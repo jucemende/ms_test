@@ -24,7 +24,6 @@ def inativar_cliente(request, cliente_id):
     cliente.save(update_fields=["ativo"])
     return Response({"status": "cliente inativado"})
 
-
 @api_view(["PATCH"])
 def reativar_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)

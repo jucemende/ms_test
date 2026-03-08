@@ -75,6 +75,8 @@ Implementar a funcionalidade de **inativação de clientes**, fazendo com que cl
 python -m venv .venv
 source .venv/bin/activate
 pip install django
+pip install djangorestframework
+pip install django-cors-headers
 python manage.py migrate
 python manage.py runserver
 ```
